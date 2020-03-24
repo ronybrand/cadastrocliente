@@ -3,8 +3,11 @@ package br.com.brand.rony.spring.boot.crud_cliente.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.brand.rony.spring.boot.crud_cliente.domain.Estado;
 
+@Repository
 public class EstadoDaoImpl implements EstadoDao {
 	
     @PersistenceContext

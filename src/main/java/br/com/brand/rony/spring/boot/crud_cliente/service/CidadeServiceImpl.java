@@ -2,6 +2,11 @@ package br.com.brand.rony.spring.boot.crud_cliente.service;
 
 import java.util.List;
 
+import javax.ws.rs.Path;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
