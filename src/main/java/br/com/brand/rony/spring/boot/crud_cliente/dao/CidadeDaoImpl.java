@@ -31,9 +31,9 @@ public class CidadeDaoImpl implements CidadeDao {
     }
     
     @Override
-    public List<Cidade> recuperarPorEstado(long estadoId) {
-        return em.createQuery("select c from Cidade c where c.estado.id = :id", Cidade.class)
-                .setParameter("id", estadoId)
+    public List<Cidade> recuperarPorEstado(String estado) {
+        return em.createQuery("select c from Cidade c where c.estado.id like :id", Cidade.class)
+                .setParameter("nome", estado)
                 .getResultList();
     }
     

@@ -9,6 +9,6 @@ public interface CidadeDao {
     void salvar(Cidade cidade);
     void atualizar(Cidade cidade);
     void excluir(long cidadeId);
-    List<Cidade> recuperarPorEstado(long estadoId);
+    List<Cidade> recuperarPorEstado(String estado);
     List<Cidade> recuperarPorNome(String nomeCidade);
 }

@@ -26,9 +26,10 @@ public class Cidade {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "id_estado_fk")
-    private Estado estado;
+    @NotBlank
+    @Size(min = 2, max = 100)
+    @Column(nullable = false, length = 100)
+    private String estado;
 
 	public long getId() {
         return id;
@@ -46,11 +47,11 @@ public class Cidade {
         this.nome = nome;
     }
 
-	public Estado getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 }

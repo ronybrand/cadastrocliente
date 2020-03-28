@@ -1,5 +1,7 @@
 package br.com.brand.rony.spring.boot.crud_cliente.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +27,16 @@ public class Cliente {
     @Size(min = 2, max = 100)
     @Column(nullable = false, length = 100)
     private String nome;
+    
+	@Column(name = "ts_data_nasc")
+	private Date dataNascimento;
 
-    @ManyToOne
+
+    private int idade;
+    
+    private char sexo;
+    
+	@ManyToOne
     @JoinColumn(name = "id_cidade_fk")
     private Cidade cidade;
 
@@ -52,5 +62,29 @@ public class Cliente {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	
+    public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
 	}
 }

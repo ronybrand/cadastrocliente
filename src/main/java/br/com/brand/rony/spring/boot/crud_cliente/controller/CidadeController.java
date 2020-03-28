@@ -19,26 +19,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.brand.rony.spring.boot.crud_cliente.domain.Cliente;
-import br.com.brand.rony.spring.boot.crud_cliente.service.ClienteService;
+import br.com.brand.rony.spring.boot.crud_cliente.domain.Cidade;
+import br.com.brand.rony.spring.boot.crud_cliente.service.CidadeService;
 
 @RestController
-@RequestMapping( value = "/cadastrocliente/cliente")
-public class ClienteController {
+@RequestMapping( value = "/cadastrocliente/cidade")
+public class CidadeController {
 	@Autowired
-	private ClienteService clienteService;
+	private CidadeService cidadeService;
 
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-	public Cliente getClienteById(
-			   @PathVariable("id") long id) {
-	      return clienteService.recuperarPorId(id);
+	@RequestMapping(value = { "estado" , "/" } , method = RequestMethod.GET)
+	public List<Cidade> getCidadeByEstado(String estado) {
+	      return cidadeService.recuperarPorEstado(estado);
    }
 	
 
 	@RequestMapping(value = { "" , "/" } , method = RequestMethod.GET)
-	public List<Cliente> getClienteByNome(String nome) {
-	      return clienteService.recuperarPorNome(nome);
+	public List<Cidade> getCidadeByNome(String nome) {
+	      return cidadeService.recuperarPorNome(nome);
    }
 	@RequestMapping(value = "/ex/foos", method = RequestMethod.DELETE)
 	@ResponseBody
@@ -47,15 +45,15 @@ public class ClienteController {
 	}
 	
 	@PostMapping
-	public @ResponseBody ResponseEntity < String > salvar(@Valid @RequestBody Cliente cliente) { 
-    	clienteService.salvar(cliente);
+	public @ResponseBody ResponseEntity < String > salvar(@Valid @RequestBody Cidade cidade) { 
+    	cidadeService.salvar(cidade);
     	
     	return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 	
 	@PutMapping
-	public @ResponseBody ResponseEntity < String > atualizar(@Valid @RequestBody Cliente cliente) { 
-    	clienteService.atualizar(cliente);
+	public @ResponseBody ResponseEntity < String > atualizar(@Valid @RequestBody Cidade cidade) { 
+    	cidadeService.atualizar(cidade);
     	
     	return new ResponseEntity<String>("Response from PUT method", HttpStatus.OK);
     }
@@ -63,6 +61,6 @@ public class ClienteController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
     public void excluir(@PathVariable("id") Long id) {
-    	clienteService.excluir(id);
+    	cidadeService.excluir(id);
     }
 }
